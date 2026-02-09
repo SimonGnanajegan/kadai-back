@@ -28,7 +28,7 @@ const app = express();
 
 // CORS configuration for Angular frontend
 app.use(cors({
-    origin: 'http://localhost:4200',
+    origin: process.env.FRONTEND_URL || 'http://localhost:4200',
     credentials: true
 }));
 
@@ -89,7 +89,7 @@ const { Server } = require("socket.io");
 const io = new Server(server, {
     pingTimeout: 60000,
     cors: {
-        origin: "http://localhost:4200",
+        origin: process.env.FRONTEND_URL || "http://localhost:4200",
         credentials: true
     }
 });
